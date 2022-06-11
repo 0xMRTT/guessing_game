@@ -1,4 +1,0 @@
-fr: # The language code of this mapping file
-  hello: Bonjour le monde # A simple key -> value mapping
-  messages:
-    hello: Bonjour, %{name} # A nested key.sub_key -> value mapping, in this case "messages.hello" maps to "Hello, %{name}"
