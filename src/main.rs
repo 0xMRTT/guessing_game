@@ -22,7 +22,7 @@ fn main() {
 ======================================================================================================                                                                                                                                                                         
    ").bold().red());
     let mut score = 0;
-    let mut best_try = 0;
+    let mut best_try: u32;
 
     loop {
         // START: Game
