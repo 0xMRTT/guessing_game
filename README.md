@@ -1,6 +1,6 @@
 # Guessing game
 
-<script id="asciicast-501023" src="https://asciinema.org/a/501023.js" async></script>
+[![asciicast](https://asciinema.org/a/501023.svg)](https://asciinema.org/a/501023)
 ## Play
 
 Just download the game and run it.
