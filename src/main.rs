@@ -17,7 +17,6 @@ fn main() {
     term.clear_line();
 
     println!("This is {} neat", style("quite").blue());
-    let name: String = prompt("Enter your name");
 
     
 }
