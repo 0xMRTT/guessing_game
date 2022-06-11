@@ -4,6 +4,8 @@ use console::style;
 
 use rand::Rng;
 use requestty::Question;
+use inquire::CustomType;
+use std::cmp::Ordering;
 
 fn main() {
     let lang = "en";
@@ -13,23 +15,29 @@ fn main() {
     let secret_number = rand::thread_rng().gen_range(1..101);
     
 
-    //loop {
+    loop {
+        let user_number = CustomType::<u32>::new("Whats your number ?")
+            .with_formatter(&|i| format!("{:.2}", i))
+            .with_error_message("Please type a valid number")
+            .with_help_message("Type the number")
+            .with_placeholder("number")
+            .prompt();
 
-        let user_number = Question::int("number")
-        .message("Enter your number?")
-        .validate(|number, previous_answers| {
-            if number > 0 && number <= 100 {
-                Ok(())
-            } else {
-                Err(format!("Number must be higher than 0 and lower than 100 (current number {} )", number))
+        match user_number {
+            Ok(_) => println!("Check if match...."),
+            Err(_) => println!("ERROR"),
+        }
+
+        match user_number.unwrap().cmp(&secret_number) {
+            Ordering::Less => println!("It's higher!"),
+            Ordering::Greater => println!("It's lower"),
+            Ordering::Equal => {
+                println!("You won !");
+                break;
             }
-        })
-        .build();
-        println!("{:#?}", requestty::prompt_one(user_number));
-        println!("{:#?}", number)
-        
+        }
 
-    //}
+    }
 
     
     //println!(!("out.hello_world", lang);
