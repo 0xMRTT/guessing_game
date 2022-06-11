@@ -4,8 +4,8 @@ use std::time::Duration;
 
 use console::Term;
 use console::style;
-use promptly::{prompt, prompt_default, prompt_opt};
 
+use rand::Rng;
 
 fn main() {
     let lang = "en";

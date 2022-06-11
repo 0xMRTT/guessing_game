@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 locales = "0.1.0"
 console = "0.15.0"
+rand = "0.8.5"
