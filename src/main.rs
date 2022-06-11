@@ -4,6 +4,7 @@ use std::time::Duration;
 
 use console::Term;
 use console::style;
+use promptly::{prompt, prompt_default, prompt_opt};
 
 
 fn main() {
@@ -16,5 +17,7 @@ fn main() {
     term.clear_line();
 
     println!("This is {} neat", style("quite").blue());
+    let name: String = prompt("Enter your name");
+
     
 }
