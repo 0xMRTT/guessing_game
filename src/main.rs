@@ -3,15 +3,27 @@ use locales::t;
 use console::style;
 
 use rand::Rng;
-use requestty::Question;
 use inquire::CustomType;
 use std::cmp::Ordering;
+use emojicon::Emojicon;
 
 fn main() {
     let lang = "en";
+    let emojicon = Emojicon::new();
 
+    println!("{}", style("    
+======================================================================================================
 
-    println!("{} {} {}", style("Guess the").black().on_red(), style("number").red().bold().on_black(), style("!").black().on_red());
+    .--.                            .-. .-.                                .-.                .-.
+    : .--'                          .' `.: :                                : :                : :
+    : : _ .-..-. .--.  .--.  .--.   `. .': `-.  .--.   ,-.,-..-..-.,-.,-.,-.: `-.  .--. .--.   : :
+    : :; :: :; :' '_.'`._-.'`._-.'   : : : .. :' '_.'  : ,. :: :; :: ,. ,. :' .; :' '_.': ..'  :_;
+    `.__.'`.__.'`.__.'`.__.'`.__.'   :_; :_;:_;`.__.'  :_;:_;`.__.':_;:_;:_;`.__.'`.__.':_;    :_;
+                                                                                                  
+======================================================================================================                                                                                                                                                                         
+   ").bold().red());
+
+    println!("Generating the secret number ... {}", emojicon.get_by_name("key").unwrap().collect::<Vec<_>>()[0]);
     let secret_number = rand::thread_rng().gen_range(1..101);
     
 
@@ -24,20 +36,22 @@ fn main() {
             .prompt();
 
         match user_number {
-            Ok(_) => println!("Check if match...."),
-            Err(_) => println!("ERROR"),
+            Ok(_) => println!("Check if match.... {}", emojicon.get_by_name("fire").unwrap().collect::<Vec<_>>()[0]),
+            Err(_) => println!("Good bye {}", emojicon.get_by_name("wave").unwrap().collect::<Vec<_>>()[0]),
         }
 
         match user_number.unwrap().cmp(&secret_number) {
-            Ordering::Less => println!("It's higher!"),
-            Ordering::Greater => println!("It's lower"),
+            Ordering::Less => println!("It's higher! {}", emojicon.get_by_name("thumbsup").unwrap().collect::<Vec<_>>()[0]),
+            Ordering::Greater => println!("It's lower {}", emojicon.get_by_name("thumbsdown").unwrap().collect::<Vec<_>>()[0]),
             Ordering::Equal => {
-                println!("You won !");
+                println!("You won ! {}", emojicon.get_by_name("trophy").unwrap().collect::<Vec<_>>()[0]);
                 break;
             }
         }
 
     }
+
+    println!("Good bye {}", emojicon.get_by_name("wave").unwrap().collect::<Vec<_>>()[0]);
 
     
     //println!(!("out.hello_world", lang);
