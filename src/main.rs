@@ -1,5 +1,3 @@
-use locales::t;
-
 use console::style;
 
 use rand::Rng;
@@ -8,7 +6,6 @@ use std::cmp::Ordering;
 use emojicon::Emojicon;
 
 fn main() {
-    let lang = "en";
     let emojicon = Emojicon::new();
 
     println!("{}", style("    
@@ -54,7 +51,6 @@ fn main() {
     println!("Good bye {}", emojicon.get_by_name("wave").unwrap().collect::<Vec<_>>()[0]);
 
     
-    //println!(!("out.hello_world", lang);
 
     
 }
