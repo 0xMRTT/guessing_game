@@ -60,7 +60,7 @@ fn main() {
                 }
             }
 
-            if try_user > best_try {
+            if try_user < best_try {
                 best_try = try_user;
             }
 
