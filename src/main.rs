@@ -23,7 +23,8 @@ fn main() {
    ").bold().red());
     let mut score = 0;
     let mut best_try = 10000; // Big, very big number :D
-    println!("Hi, Gamer!");
+    let mut played = false;
+    println!("Hi, Gamer! {}", emojicon.get_by_name("wave").unwrap().collect::<Vec<_>>()[0]);
     loop {
         // START: Game
 
@@ -97,6 +98,7 @@ fn main() {
                                         println!("It's your new goals to beat. Good luck!");
                                     }
                                     score = score + 1;
+                                    played = true;
                                     break;
                                 }
                             }
@@ -113,7 +115,12 @@ fn main() {
                         // END: GAME
                     },
                     "Quit" => {
-                        println!("Your best score is {}", best_try);
+                        if played == false {
+                            println!("Oh noh! You didn't play yet. {}", emojicon.get_by_name("cry").unwrap().collect::<Vec<_>>()[0]);
+                        }
+                        else {
+                            println!("Your best score is {}", best_try);
+                        }
                         break;
                     },
                     "Rules" => {
