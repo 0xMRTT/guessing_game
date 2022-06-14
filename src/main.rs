@@ -116,7 +116,7 @@ fn main() {
                         break;
                     },
                     "Rules" => {
-                        println!("WIP");
+                        println!("The computer generates a random number. Then you have to guess this number. The goal is to find the secret number as little as possible. Good luck!");
                     },
                     &_ => {
                         // Same as quit
