@@ -36,7 +36,7 @@ fn main() {
             let user_number = CustomType::<u32>::new("Whats your number ?")
                 .with_formatter(&|i| format!("{:.2}", i))
                 .with_error_message("Please type a valid number")
-                .with_help_message("Type the number")
+                .with_help_message(format!("Write a number ({})", try_user).as_str())
                 .with_placeholder("number")
                 .prompt();
 
@@ -99,7 +99,7 @@ fn main() {
 
         // END: GAME
 
-        let options: Vec<&str> = vec!["Continue", "Quit"];
+        let options: Vec<&str> = vec!["Continue", "Quit","Rules"];
 
         let continue_game: Result<&str, InquireError> =
             Select::new("What do you want to do ?", options).prompt();
@@ -114,7 +114,8 @@ fn main() {
                     "Quit" => {
                         println!("Your best score is {}", best_try);
                         break;
-                    }
+                    },
+
                     &_ => {
                         // Same as quit
                         println!("Your best score is {}", best_try);
