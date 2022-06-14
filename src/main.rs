@@ -47,7 +47,7 @@ fn main() {
                         println!("The computer generates a random number. Then you have to guess this number. The goal is to find the secret number as little as possible. Good luck!");
                     },
                     "About" => {
-
+                        println!("This game was created by 0xMRTT to learn rust. It's a free software. You can find source on https://github.com/0xMRTT/guessing_game.")
                     },
                     &_ => {
                         // Same as quit
