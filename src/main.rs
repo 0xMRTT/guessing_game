@@ -22,7 +22,7 @@ fn main() {
 ======================================================================================================                                                                                                                                                                         
    ").bold().red());
     let mut score = 0;
-    let mut best_try: u32;
+    let mut best_try = 10000; // Big, very big number :D
 
     loop {
         // START: Game
@@ -51,6 +51,8 @@ fn main() {
                 ),
             }
 
+            try_user = try_user + 1;
+
             match user_number.unwrap().cmp(&secret_number) {
                 Ordering::Less => {
                     println!(
@@ -60,7 +62,6 @@ fn main() {
                             .unwrap()
                             .collect::<Vec<_>>()[0]
                     );
-                    try_user = try_user + 1;
                 }
                 Ordering::Greater => {
                     println!(
@@ -70,7 +71,6 @@ fn main() {
                             .unwrap()
                             .collect::<Vec<_>>()[0]
                     );
-                    try_user = try_user + 1;
                 }
                 Ordering::Equal => {
                     println!(
@@ -78,14 +78,17 @@ fn main() {
                         try_user,
                         emojicon.get_by_name("trophy").unwrap().collect::<Vec<_>>()[0]
                     );
+
+                    if try_user < best_try {
+                        best_try = try_user;
+                        println!("It's your new goals to beat. Good luck!");
+                    }
                     score = score + 1;
                     break;
                 }
             }
 
-            if try_user < best_try {
-                best_try = try_user;
-            }
+            
         }
 
         println!(
