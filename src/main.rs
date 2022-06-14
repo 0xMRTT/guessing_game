@@ -116,7 +116,7 @@ fn main() {
                     },
                     "Quit" => {
                         if played == false {
-                            println!("Oh noh! You didn't play yet. {}", emojicon.get_by_name("cry").unwrap().collect::<Vec<_>>()[0]);
+                            println!("Oh noh! You didn't play yet. {} See you later. ", emojicon.get_by_name("cry").unwrap().collect::<Vec<_>>()[0]);
                         }
                         else {
                             println!("Your best score is {}", best_try);
