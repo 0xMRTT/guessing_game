@@ -115,7 +115,9 @@ fn main() {
                         println!("Your best score is {}", best_try);
                         break;
                     },
-
+                    "Rules" => {
+                        println!("WIP");
+                    },
                     &_ => {
                         // Same as quit
                         println!("Your best score is {}", best_try);
