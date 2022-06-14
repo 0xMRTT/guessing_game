@@ -23,9 +23,39 @@ fn main() {
    ").bold().red());
     let mut score = 0;
     let mut best_try = 10000; // Big, very big number :D
-
+    println!("Hi, Gamer!");
     loop {
         // START: Game
+
+        let options: Vec<&str> = vec!["Start a game", "Quit","Rules"];
+
+        let continue_game: Result<&str, InquireError> =
+            Select::new("What do you want to do ?", options).prompt();
+
+        match continue_game {
+            Ok(choice) => {
+                match choice {
+                    "Start a game" => println!(
+                        "Start a new game {}",
+                        emojicon.get_by_name("game").unwrap().collect::<Vec<_>>()[0]
+                    ),
+                    "Quit" => {
+                        println!("Your best score is {}", best_try);
+                        break;
+                    },
+                    "Rules" => {
+                        println!("The computer generates a random number. Then you have to guess this number. The goal is to find the secret number as little as possible. Good luck!");
+                    },
+                    &_ => {
+                        // Same as quit
+                        println!("Your best score is {}", best_try);
+                        break;
+                    }
+                }
+            }
+            Err(_) => println!("There was an error, please try again"),
+        }
+
         println!(
             "Generating the secret number ... {}",
             emojicon.get_by_name("key").unwrap().collect::<Vec<_>>()[0]
@@ -99,34 +129,7 @@ fn main() {
 
         // END: GAME
 
-        let options: Vec<&str> = vec!["Continue", "Quit","Rules"];
-
-        let continue_game: Result<&str, InquireError> =
-            Select::new("What do you want to do ?", options).prompt();
-
-        match continue_game {
-            Ok(choice) => {
-                match choice {
-                    "Continue" => println!(
-                        "Start a new game {}",
-                        emojicon.get_by_name("game").unwrap().collect::<Vec<_>>()[0]
-                    ),
-                    "Quit" => {
-                        println!("Your best score is {}", best_try);
-                        break;
-                    },
-                    "Rules" => {
-                        println!("The computer generates a random number. Then you have to guess this number. The goal is to find the secret number as little as possible. Good luck!");
-                    },
-                    &_ => {
-                        // Same as quit
-                        println!("Your best score is {}", best_try);
-                        break;
-                    }
-                }
-            }
-            Err(_) => println!("There was an error, please try again"),
-        }
+        
     }
 
     println!(
