@@ -27,7 +27,7 @@ fn main() {
     loop {
         // START: Game
 
-        let options: Vec<&str> = vec!["Start a game", "Quit","Rules"];
+        let options: Vec<&str> = vec!["Start a game", "Quit","Rules", "About"];
 
         let continue_game: Result<&str, InquireError> =
             Select::new("What do you want to do ?", options).prompt();
@@ -45,6 +45,9 @@ fn main() {
                     },
                     "Rules" => {
                         println!("The computer generates a random number. Then you have to guess this number. The goal is to find the secret number as little as possible. Good luck!");
+                    },
+                    "About" => {
+
                     },
                     &_ => {
                         // Same as quit
